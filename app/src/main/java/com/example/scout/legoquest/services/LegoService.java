@@ -78,7 +78,6 @@ public class LegoService extends Service {
             e.printStackTrace();
         }
         return themeDesc;
-
     }
 
 
