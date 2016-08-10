@@ -2,6 +2,7 @@ package com.example.scout.legoquest.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.scout.legoquest.R;
 import com.example.scout.legoquest.services.LegoService;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-
+                Log.d("CUBONE", "response: " + response);
             }
         });
     }

@@ -7,10 +7,20 @@ import android.content.pm.LauncherApps;
 import android.os.Handler;
 import android.os.IBinder;
 
+import com.example.scout.legoquest.models.Theme;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 
 public class LegoService extends Service {
     private static final String THEME_URL = "https://rebrickable.com/api/get_themes?key=";
@@ -46,7 +56,30 @@ public class LegoService extends Service {
         call.enqueue(callback);
     }
 
+    public ArrayList<String> getThemes(Response response) {
+        ArrayList<String> themeDesc = new ArrayList<>();
 
+        try {
+            String jsonData = response.body().string();
+            if (response.isSuccessful()) {
+                JSONObject resultsJSON = new JSONObject(jsonData);
+                JSONArray themesJSON = resultsJSON.getJSONArray("themes");
+
+                for (int i = 0; i < themesJSON.length(); i++) {
+                    JSONObject itemJSON = themesJSON.getJSONObject(i);
+                    String description = itemJSON.getString("descr");
+
+                    themeDesc.add(description);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return themeDesc;
+
+    }
 
 
     @Override
