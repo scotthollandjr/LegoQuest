@@ -8,6 +8,7 @@ import com.example.scout.legoquest.R;
 import com.example.scout.legoquest.services.LegoService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import okhttp3.Call;
@@ -15,13 +16,17 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
+    public static ArrayList<String> descriptions = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        String type = "theme";
+        String query = "query";
 
+        getLegos(type, query);
     }
 
     public void getLegos(String type, String query) {
@@ -35,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.d("CUBONE", "response: " + response);
+                descriptions = legoService.getThemes(response);
+                Log.d("CUBONE", "response: " + descriptions);
             }
         });
     }

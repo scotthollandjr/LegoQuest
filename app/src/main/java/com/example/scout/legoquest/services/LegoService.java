@@ -29,7 +29,7 @@ public class LegoService extends Service {
     private static final String THEME_2 = "&format=json";
     private static final String SETS_2 = "&format=json&type=S&query=";
     private static final String DETAIL_2 = "&format=json&set_id=";
-    private static final String API_KEY = "xxxxxxx";
+    private static final String API_KEY = "xxxxxx";
     public static String url;
 
     public LegoService() {
