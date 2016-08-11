@@ -1,12 +1,16 @@
 package com.example.scout.legoquest.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.scout.legoquest.R;
 import com.example.scout.legoquest.services.LegoService;
@@ -61,6 +65,17 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("CUBONE", "sorted: " + descriptions);
                         ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, descriptions);
                         mThemeListView.setAdapter(adapter);
+
+                        mThemeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                String theme = ((TextView)view).getText().toString();
+
+                                Intent intent = new Intent(MainActivity.this, ThemeActivity.class);
+                                intent.putExtra("query", theme);
+                                startActivity(intent);
+                            }
+                        });
                     }
                 });
             }
