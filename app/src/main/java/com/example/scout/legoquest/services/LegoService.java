@@ -69,7 +69,9 @@ public class LegoService extends Service {
                     JSONObject itemJSON = themesJSON.getJSONObject(i);
                     String description = itemJSON.getString("descr");
 
-                    themeDesc.add(description);
+                    if (themeDesc.indexOf(description) == -1) {
+                        themeDesc.add(description);
+                    }
                 }
             }
         } catch (IOException e) {

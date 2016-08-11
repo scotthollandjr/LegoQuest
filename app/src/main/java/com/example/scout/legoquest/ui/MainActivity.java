@@ -14,6 +14,7 @@ import com.example.scout.legoquest.services.LegoService;
 import java.io.IOException;
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -51,9 +52,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 descriptions = legoService.getThemes(response);
-                Log.d("CUBONE", "response: " + descriptions);
-                ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, descriptions);
-                mThemeListView.setAdapter(adapter);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d("CUBONE", "unsorted: " + descriptions);
+                        Collections.sort(descriptions);
+                        Log.d("CUBONE", "sorted: " + descriptions);
+                        ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, descriptions);
+                        mThemeListView.setAdapter(adapter);
+                    }
+                });
             }
         });
     }
