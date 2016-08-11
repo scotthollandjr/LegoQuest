@@ -1,13 +1,10 @@
 package com.example.scout.legoquest.services;
 
-import android.app.DownloadManager;
 import android.app.Service;
 import android.content.Intent;
-import android.content.pm.LauncherApps;
-import android.os.Handler;
 import android.os.IBinder;
 
-import com.example.scout.legoquest.models.Theme;
+import com.example.scout.legoquest.models.Set;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -80,6 +77,39 @@ public class LegoService extends Service {
             e.printStackTrace();
         }
         return themeDesc;
+    }
+
+    public ArrayList<Set> getSets(Response response) {
+        ArrayList<Set> sets = new ArrayList<>();
+
+        try {
+            String jsonData = response.body().string();
+            if (response.isSuccessful()) {
+                JSONObject resultsJSON = new JSONObject(jsonData);
+                JSONArray setsJSON = resultsJSON.getJSONArray("results");
+
+                for (int i = 0; i < setsJSON.length(); i++) {
+                    JSONObject itemJSON = setsJSON.getJSONObject(i);
+                    String set_id = itemJSON.getString("set_id");
+                    String descr = itemJSON.getString("descr");
+                    int year = Integer.parseInt(itemJSON.getString("year"));
+                    int pieces = Integer.parseInt(itemJSON.getString("pieces"));
+                    String theme1 = itemJSON.getString("theme1");
+                    String theme2 = itemJSON.getString("theme2");
+                    String theme3 = itemJSON.getString("theme3");
+                    String url = itemJSON.getString("url");
+                    String img_big = itemJSON.getString("img_big");
+
+                    Set newSet = new Set(set_id, descr, year, pieces, theme1, theme2, theme3, url, img_big);
+                    sets.add(newSet);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return sets;
     }
 
 
