@@ -27,4 +27,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.4.0'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'se.akerfeldt:okhttp-signpost:1.1.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }

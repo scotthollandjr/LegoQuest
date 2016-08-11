@@ -7,8 +7,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.scout.legoquest.R;
 import com.example.scout.legoquest.models.Set;
 
@@ -44,6 +46,7 @@ public class SetListAdapter extends RecyclerView.Adapter<SetListAdapter.SetViewH
     }
 
     public class SetViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        @Bind(R.id.listImage) ImageView mListImage;
         @Bind(R.id.descrText) TextView mDescrText;
         @Bind(R.id.yearText) TextView mYearText;
         @Bind(R.id.piecesText) TextView mPiecesText;
@@ -67,6 +70,9 @@ public class SetListAdapter extends RecyclerView.Adapter<SetListAdapter.SetViewH
         }
 
         public void bindSet(Set set) {
+            Glide.with(mContext)
+                    .load(set.getImg_tn())
+                    .into(mListImage);
             mDescrText.setText(set.getDescr());
             mPiecesText.setText(set.getPieces() + " pieces");
             mYearText.setText(set.getYear() + "");
