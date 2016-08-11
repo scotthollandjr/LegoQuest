@@ -3,6 +3,8 @@ package com.example.scout.legoquest.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.scout.legoquest.R;
+import com.example.scout.legoquest.adapters.SetListAdapter;
 import com.example.scout.legoquest.models.Set;
 import com.example.scout.legoquest.services.LegoService;
 
@@ -26,8 +29,10 @@ import okhttp3.Response;
 public class ThemeActivity extends AppCompatActivity {
     private String query;
     private String type;
+    private SetListAdapter mSetAdapter;
     ArrayList<Set> sets = new ArrayList<>();
     @Bind(R.id.themeText) TextView mThemeText;
+    @Bind(R.id.setRecyclerView) RecyclerView mSetRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,23 +66,11 @@ public class ThemeActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Log.d("CUBONE", "sets: " + sets);
-//                        Collections.sort(descriptions);
-//                        Log.d("CUBONE", "sorted: " + descriptions);
-//                        ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, descriptions);
-//                        mThemeListView.setAdapter(adapter);
-//
-//                        mThemeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                            @Override
-//                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                                String theme = ((TextView)view).getText().toString();
-//
-//                                Intent intent = new Intent(MainActivity.this, ThemeActivity.class);
-//                                intent.putExtra("query", theme);
-//                                startActivity(intent);
-//                            }
-//                        });
-
+                        mSetAdapter = new SetListAdapter(getApplicationContext(), sets);
+                        mSetRecyclerView.setAdapter(mSetAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ThemeActivity.this);
+                        mSetRecyclerView.setLayoutManager(layoutManager);
+                        mSetRecyclerView.setHasFixedSize(true);
                     }
                 });
             }

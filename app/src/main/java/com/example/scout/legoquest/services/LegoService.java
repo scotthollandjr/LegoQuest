@@ -98,9 +98,10 @@ public class LegoService extends Service {
                     String theme2 = itemJSON.getString("theme2");
                     String theme3 = itemJSON.getString("theme3");
                     String url = itemJSON.getString("url");
+                    String img_tn = itemJSON.getString("img_tn");
                     String img_big = itemJSON.getString("img_big");
 
-                    Set newSet = new Set(set_id, descr, year, pieces, theme1, theme2, theme3, url, img_big);
+                    Set newSet = new Set(set_id, descr, year, pieces, theme1, theme2, theme3, url, img_tn, img_big);
                     sets.add(newSet);
                 }
             }
