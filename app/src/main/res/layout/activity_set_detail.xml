@@ -10,8 +10,7 @@
     tools:context="com.example.scout.legoquest.ui.SetDetailActivity">
 
     <fragment
-        android:id="@+id/toolbar_fragment"
-        class="com.example.scout.legoquest.ui.SetDetailFragment"
+        android:id="@+id/detailFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
