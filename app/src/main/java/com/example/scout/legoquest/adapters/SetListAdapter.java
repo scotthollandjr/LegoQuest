@@ -13,6 +13,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.scout.legoquest.R;
 import com.example.scout.legoquest.models.Set;
+import com.example.scout.legoquest.ui.SetDetailActivity;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -22,6 +25,7 @@ import butterknife.ButterKnife;
 public class SetListAdapter extends RecyclerView.Adapter<SetListAdapter.SetViewHolder> {
     private ArrayList<Set> mSets = new ArrayList<>();
     private Context mContext;
+    private Set mSet;
 
     public SetListAdapter(Context context, ArrayList<Set> sets) {
         mContext = context;
@@ -62,11 +66,11 @@ public class SetListAdapter extends RecyclerView.Adapter<SetListAdapter.SetViewH
 
         @Override
         public void onClick(View v) {
-//            int itemPosition = getLayoutPosition();
-//            Intent intent = new Intent(mContext, SetDetailActivity.class);
-//            intent.putExtra("position", itemPosition + "");
-//            intent.putExtra("sets", Parcels.wrap(mSets));
-//            mContext.startActivity(intent);
+            int itemPosition = getLayoutPosition();
+            Set mSet = mSets.get(itemPosition);
+            Intent intent = new Intent(mContext, SetDetailActivity.class);
+            intent.putExtra("set", Parcels.wrap(mSet));
+            mContext.startActivity(intent);
         }
 
         public void bindSet(Set set) {

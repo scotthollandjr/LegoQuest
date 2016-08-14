@@ -60,9 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Log.d("CUBONE", "unsorted: " + descriptions);
                         Collections.sort(descriptions);
-                        Log.d("CUBONE", "sorted: " + descriptions);
                         ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, descriptions);
                         mThemeListView.setAdapter(adapter);
 

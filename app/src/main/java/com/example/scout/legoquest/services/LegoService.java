@@ -26,7 +26,7 @@ public class LegoService extends Service {
     private static final String THEME_2 = "&format=json";
     private static final String SETS_2 = "&format=json&type=S&query=";
     private static final String DETAIL_2 = "&format=json&set_id=";
-    private static final String API_KEY = "xxxxxx";
+    private static final String API_KEY = "m2nvy9nFl9";
     public static String url;
 
     public LegoService() {
@@ -41,8 +41,6 @@ public class LegoService extends Service {
             url = THEME_URL + API_KEY + THEME_2;
         } else if (type == "sets") {
             url = SETS_URL + API_KEY + SETS_2 + query;
-        } else if (type == "detail") {
-            url = DETAIL_URL + API_KEY + DETAIL_2 + query;
         }
 
         Request request = new Request.Builder()

@@ -23,7 +23,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".ui.ThemeActivity"></activity>
+        <activity android:name=".ui.ThemeActivity" />
+        <activity android:name=".ui.SetDetailActivity"></activity>
     </application>
 
 </manifest>
