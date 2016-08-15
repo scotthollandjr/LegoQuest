@@ -32,10 +32,10 @@ public class SetDetailFragment extends Fragment {
 
     public static SetDetailFragment newInstance(Set set) {
         SetDetailFragment setDetailFragment = new SetDetailFragment();
-//        Bundle args = new Bundle();
+        Bundle args = new Bundle();
 //        //Log.d("CUBONE", "fraggy setDetailFrag: " + set.getDescr());
-//        args.putParcelable("set", Parcels.wrap(set));
-//        setDetailFragment.setArguments(args);
+        args.putParcelable("set", Parcels.wrap(set));
+        setDetailFragment.setArguments(args);
         return setDetailFragment;
     }
 
@@ -59,11 +59,11 @@ public class SetDetailFragment extends Fragment {
 ////        String img_tn = bundle.getString("img_tn");
 ////        String img_big = bundle.getString("img_big");
 
-        mSet = getArguments().getParcelable("mSet");
+        mSet = Parcels.unwrap(getArguments().getParcelable("set"));
 
         //mSet = new Set(set_id, descr, year, pieces, theme1, theme2, theme3, url, img_tn, img_big);
 
-        Log.d("CUBONE", "fraggy onCreate: " + mSet.getDescr());
+//        Log.d("CUBONE", "fraggy onCreate: " + mSet.getDescr());
 
     }
 
@@ -73,13 +73,13 @@ public class SetDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_set_detail, container, false);
         ButterKnife.bind(this, view);
 
-//        Glide.with(this)
-//                .load(mSet.getImg_big())
-//                .into(mImageView);
-//        mDescrView.setText(mSet.getDescr());
-        //mPiecesView.setText(mSet.getPieces() + "");
-        //mYearView.setText(mSet.getYear() + "");
-        //mThemeView.setText(mSet.getTheme1());
+        Glide.with(this)
+                .load(mSet.getImg_big())
+                .into(mImageView);
+        mDescrView.setText(mSet.getDescr());
+        mPiecesView.setText(mSet.getPieces() + "");
+        mYearView.setText(mSet.getYear() + "");
+        mThemeView.setText(mSet.getTheme1());
 
         return view;
     }
