@@ -33,7 +33,6 @@ public class SetDetailFragment extends Fragment {
     public static SetDetailFragment newInstance(Set set) {
         SetDetailFragment setDetailFragment = new SetDetailFragment();
         Bundle args = new Bundle();
-//        //Log.d("CUBONE", "fraggy setDetailFrag: " + set.getDescr());
         args.putParcelable("set", Parcels.wrap(set));
         setDetailFragment.setArguments(args);
         return setDetailFragment;
@@ -47,24 +46,7 @@ public class SetDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        Bundle bundle = getArguments();
-////        String set_id = bundle.getString("set_id");
-////        String descr = bundle.getString("descr");
-////        int year = Integer.parseInt(bundle.getString("year"));
-////        int pieces = Integer.parseInt(bundle.getString("pieces"));
-////        String theme1 = bundle.getString("theme1");
-////        String theme2 = bundle.getString("theme2");
-////        String theme3 = bundle.getString("theme3");
-////        String url = bundle.getString("url");
-////        String img_tn = bundle.getString("img_tn");
-////        String img_big = bundle.getString("img_big");
-
         mSet = Parcels.unwrap(getArguments().getParcelable("set"));
-
-        //mSet = new Set(set_id, descr, year, pieces, theme1, theme2, theme3, url, img_tn, img_big);
-
-//        Log.d("CUBONE", "fraggy onCreate: " + mSet.getDescr());
-
     }
 
     @Override

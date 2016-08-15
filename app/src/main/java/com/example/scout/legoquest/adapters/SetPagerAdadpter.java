@@ -22,7 +22,6 @@ public class SetPagerAdadpter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Log.d("CuBonE", "setpageradapt: " + mSets.get(position).getDescr());
         return SetDetailFragment.newInstance(mSets.get(position));
     }
 

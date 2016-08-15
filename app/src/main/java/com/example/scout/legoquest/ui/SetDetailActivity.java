@@ -33,36 +33,11 @@ public class SetDetailActivity extends FragmentActivity {
         ButterKnife.bind(this);
 
         mSets = Parcels.unwrap(getIntent().getParcelableExtra("sets"));
-        //Log.d("CUBONE", "within setDetaActiv " + mSet.getDescr());
 
         int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
 
         adapterViewPager = new SetPagerAdadpter(getSupportFragmentManager(), mSets);
         viewPager.setAdapter(adapterViewPager);
         viewPager.setCurrentItem(startingPosition);
-//        SetDetailFragment setDetailFragment = new SetDetailFragment();
-//
-//
-
-//        Bundle bundle = new Bundle();
-//        bundle.putString("set_id", mSet.getSet_id());
-//        bundle.putString("descr", mSet.getDescr());
-//        bundle.putString("year", mSet.getYear() + "");
-//        bundle.putString("pieces", mSet.getPieces() + "");
-//        bundle.putString("theme1", mSet.getTheme1());
-//        bundle.putString("theme2", mSet.getTheme2());
-//        bundle.putString("theme3", mSet.getTheme3());
-//        bundle.putString("url", mSet.getUrl());
-//        bundle.putString("img_tn", mSet.getImg_tn());
-//        bundle.putString("img_big", mSet.getImg_big());
-//
-//        FragmentManager manager = getFragmentManager();
-//        Fragment fragment = manager.findFragmentById(R.id.detailFragment);
-//
-//        Bundle bundle1 = new Bundle();
-//        bundle.putParcelable("mSet", Parcels.wrap(mSet));
-//        fragment.setArguments(bundle1);
-//
-//        manager.beginTransaction().replace(R.id.detailFragment, fragment);
     }
 }

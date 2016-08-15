@@ -67,7 +67,6 @@ public class SetListAdapter extends RecyclerView.Adapter<SetListAdapter.SetViewH
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
-            //Set mSet = mSets.get(itemPosition);
             Intent intent = new Intent(mContext, SetDetailActivity.class);
             intent.putExtra("position", itemPosition + "");
             intent.putExtra("sets", Parcels.wrap(mSets));
