@@ -6,6 +6,18 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView2"
+        android:background="@drawable/legobkd2"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#c72f2f2f"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
