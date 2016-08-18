@@ -24,6 +24,37 @@
         android:id="@+id/setRecyclerView"
         android:layout_below="@+id/themeText"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="53dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Sort Alphabetically"
+        android:id="@+id/alphaTextView"
+        android:layout_below="@+id/themeText"
+        android:layout_alignRight="@+id/themeText"
+        android:layout_alignEnd="@+id/themeText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Sort by Pieces"
+        android:id="@+id/pieceTextView"
+        android:layout_alignTop="@+id/alphaTextView"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Sort by Year"
+        android:id="@+id/yearTextView"
+        android:layout_below="@+id/themeText"
+        android:layout_alignRight="@+id/setRecyclerView"
+        android:layout_alignEnd="@+id/setRecyclerView" />
 
 </RelativeLayout>

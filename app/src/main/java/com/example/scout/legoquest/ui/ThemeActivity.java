@@ -26,13 +26,16 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class ThemeActivity extends AppCompatActivity {
+public class ThemeActivity extends AppCompatActivity implements View.OnClickListener {
     private String query;
     private String type;
     private SetListAdapter mSetAdapter;
     ArrayList<Set> sets = new ArrayList<>();
     @Bind(R.id.themeText) TextView mThemeText;
     @Bind(R.id.setRecyclerView) RecyclerView mSetRecyclerView;
+    @Bind(R.id.pieceTextView) TextView pieceButton;
+    @Bind(R.id.yearTextView) TextView yearButton;
+    @Bind(R.id.alphaTextView) TextView alphaButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,5 +78,18 @@ public class ThemeActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view == yearButton) {
+
+        }
+        if (view == pieceButton) {
+
+        }
+        if (view == alphaButton) {
+
+        }
     }
 }

@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.scout.legoquest.R;
+import com.example.scout.legoquest.adapters.ThemeListAdapter;
+import com.example.scout.legoquest.models.Theme;
 import com.example.scout.legoquest.services.LegoService;
 
 import java.io.IOException;
@@ -28,16 +30,16 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<String> descriptions = new ArrayList<>();
-
-    @Bind(R.id.themeListView) ListView mThemeListView;
-
-
+    ArrayList<Theme> themes = new ArrayList<>();
+    private ThemeListAdapter mThemeAdapter;
+    @Bind(R.id.themeRecyclerView) RecyclerView mThemeRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
         String type = "theme";
         String query = "query";
 
@@ -55,25 +57,16 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                descriptions = legoService.getThemes(response);
+                themes = legoService.getThemes(response);
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Collections.sort(descriptions);
-                        ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, descriptions);
-                        mThemeListView.setAdapter(adapter);
-
-                        mThemeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                String theme = ((TextView)view).getText().toString();
-
-                                Intent intent = new Intent(MainActivity.this, ThemeActivity.class);
-                                intent.putExtra("query", theme);
-                                startActivity(intent);
-                            }
-                        });
+                        mThemeAdapter = new ThemeListAdapter(getApplicationContext(), themes);
+                        mThemeRecyclerView.setAdapter(mThemeAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
+                        mThemeRecyclerView.setLayoutManager(layoutManager);
+                        mThemeRecyclerView.setHasFixedSize(true);
                     }
                 });
             }

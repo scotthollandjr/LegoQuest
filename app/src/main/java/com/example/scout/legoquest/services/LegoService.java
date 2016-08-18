@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.IBinder;
 
 import com.example.scout.legoquest.models.Set;
+import com.example.scout.legoquest.models.Theme;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,8 +52,8 @@ public class LegoService extends Service {
         call.enqueue(callback);
     }
 
-    public ArrayList<String> getThemes(Response response) {
-        ArrayList<String> themeDesc = new ArrayList<>();
+    public ArrayList<Theme> getThemes(Response response) {
+        ArrayList<Theme> themeDesc = new ArrayList<>();
 
         try {
             String jsonData = response.body().string();
@@ -65,7 +66,10 @@ public class LegoService extends Service {
                     String description = itemJSON.getString("descr");
 
                     if (themeDesc.indexOf(description) == -1) {
-                        themeDesc.add(description);
+                        String theme_id = itemJSON.getString("theme_id");;
+                        String descr = itemJSON.getString("descr");;
+                        Theme newTheme = new Theme(theme_id, descr);
+                        themeDesc.add(newTheme);
                     }
                 }
             }
