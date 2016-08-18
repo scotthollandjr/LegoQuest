@@ -4,7 +4,7 @@ An Android LEGO set searcher! Users can search for themes, find sets by specific
 
 ### Images
 
-![Main screen]()
+![Main screen](http://i.imgur.com/QYgCg06.jpg)
 
 ### Prerequisites
 
