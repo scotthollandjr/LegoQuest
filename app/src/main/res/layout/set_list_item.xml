@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".2"
         android:id="@+id/listImage"
-        android:background="#666666"/>
+        android:background="#666666"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"/>
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:background="#ffffff"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".8"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="5dp"
+        android:padding="20dp"
+        android:background="#8c1d1d1d">
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,7 +31,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:text="Set Name"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="#ffffff"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,7 +40,8 @@
             android:id="@+id/piecesText"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textStyle="italic"/>
+            android:textStyle="bold|italic"
+            android:textColor="#ffffff"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,7 +50,8 @@
             android:id="@+id/yearText"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textStyle="italic"/>
+            android:textStyle="bold|italic"
+            android:textColor="#ffffff"/>
 
 
     </LinearLayout>
