@@ -15,7 +15,7 @@ You will need the following things properly installed on your computer.
 
 ### Installation
 
-* `git clone <https://github.com/theAppanaut/CalculatorDroid.git>` this repository
+* `git clone <https://github.com/theAppanaut/LegoQuest.git>` this repository
 * change into the new directory
 * open in Android Studios
 
