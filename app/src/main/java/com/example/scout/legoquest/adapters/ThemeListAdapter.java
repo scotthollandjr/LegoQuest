@@ -66,9 +66,10 @@ public class ThemeListAdapter extends RecyclerView.Adapter<ThemeListAdapter.Them
         @Override
         public void onClick(View view) {
             int itemPosition = getLayoutPosition();
+            Theme theme = mThemes.get(itemPosition);
+            String queryDescr = theme.getDescr();
             Intent intent = new Intent(mContext, ThemeActivity.class);
-            intent.putExtra("position", itemPosition + "");
-            intent.putExtra("themes", Parcels.wrap(mThemes));
+            intent.putExtra("query", queryDescr);
             mContext.startActivity(intent);
         }
 
