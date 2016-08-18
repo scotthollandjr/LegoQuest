@@ -39,5 +39,6 @@ public class SetDetailActivity extends FragmentActivity {
         adapterViewPager = new SetPagerAdadpter(getSupportFragmentManager(), mSets);
         viewPager.setAdapter(adapterViewPager);
         viewPager.setCurrentItem(startingPosition);
+        //setTitle(mSet.getDescr());
     }
 }
