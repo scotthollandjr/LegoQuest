@@ -7,17 +7,13 @@ import org.parceler.Parcel;
  */
 @Parcel
 public class Theme {
-    private String theme_id;
     private String descr;
 
     public Theme() {}
 
-    public Theme(String theme_id, String descr) {
-        this.theme_id = theme_id;
+    public Theme(String descr) {
         this.descr = descr;
     }
-
-    public String getTheme_id() { return theme_id; }
 
     public String getDescr() { return descr; }
 }

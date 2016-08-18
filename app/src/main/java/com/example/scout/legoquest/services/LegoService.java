@@ -13,6 +13,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -29,6 +31,7 @@ public class LegoService extends Service {
     private static final String DETAIL_2 = "&format=json&set_id=";
     private static final String API_KEY = "m2nvy9nFl9";
     public static String url;
+    public ArrayList<String> descriptions = new ArrayList<>();
 
     public LegoService() {
     }
@@ -65,11 +68,9 @@ public class LegoService extends Service {
                     JSONObject itemJSON = themesJSON.getJSONObject(i);
                     String description = itemJSON.getString("descr");
 
-                    if (themeDesc.indexOf(description) == -1) {
-                        String theme_id = itemJSON.getString("theme_id");;
-                        String descr = itemJSON.getString("descr");;
-                        Theme newTheme = new Theme(theme_id, descr);
-                        themeDesc.add(newTheme);
+                    if (descriptions.indexOf(description) == -1) {
+                        String descr = itemJSON.getString("descr");
+                        descriptions.add(descr);
                     }
                 }
             }
@@ -77,6 +78,12 @@ public class LegoService extends Service {
             e.printStackTrace();;
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+        Collections.sort(descriptions);
+
+        for (String descr : descriptions) {
+            Theme newTheme = new Theme(descr);
+            themeDesc.add(newTheme);
         }
         return themeDesc;
     }
