@@ -17,23 +17,7 @@
         android:layout_height="match_parent"
         android:background="#c72f2f2f"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/themeText"
-        android:background="#7b000000"
-        android:padding="10dp"
-        android:textColor="#ffffff"
-        android:textColorHint="#ffffff"
-        android:textSize="25sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold|italic" />
-
     <LinearLayout
-        android:layout_below="@id/themeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -100,8 +84,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/setRecyclerView"
-    android:layout_below="@+id/themeText"
-    android:layout_alignParentLeft="true"
+        android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true"
     android:layout_marginTop="53dp" />
 

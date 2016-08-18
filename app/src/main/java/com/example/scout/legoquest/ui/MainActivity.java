@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         String query = "query";
 
         getLegos(type, query);
+
+        setTitle("Welcome to LegoQuest!");
     }
 
     public void getLegos(String type, String query) {

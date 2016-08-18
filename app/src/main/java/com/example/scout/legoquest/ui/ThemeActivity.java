@@ -1,6 +1,7 @@
 package com.example.scout.legoquest.ui;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,7 +32,6 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
     private String type;
     private SetListAdapter mSetAdapter;
     ArrayList<Set> sets = new ArrayList<>();
-    @Bind(R.id.themeText) TextView mThemeText;
     @Bind(R.id.setRecyclerView) RecyclerView mSetRecyclerView;
     @Bind(R.id.pieceTextView) TextView pieceButton;
     @Bind(R.id.yearTextView) TextView yearButton;
@@ -46,11 +46,12 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
         Intent intent = getIntent();
         query = intent.getStringExtra("query");
 
-        mThemeText.setText(query);
-
         type = "sets";
 
         getLegos(type, query);
+
+
+        setTitle(query);
     }
 
     public void getLegos(String type, String query) {
