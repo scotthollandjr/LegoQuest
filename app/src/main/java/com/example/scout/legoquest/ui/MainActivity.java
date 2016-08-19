@@ -9,11 +9,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.scout.legoquest.R;
+import com.example.scout.legoquest.adapters.SetListAdapter;
 import com.example.scout.legoquest.adapters.ThemeListAdapter;
+import com.example.scout.legoquest.models.Set;
 import com.example.scout.legoquest.models.Theme;
 import com.example.scout.legoquest.services.LegoService;
 
@@ -28,11 +32,13 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
-    private ArrayList<String> descriptions = new ArrayList<>();
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     ArrayList<Theme> themes = new ArrayList<>();
     private ThemeListAdapter mThemeAdapter;
+    ArrayList<Set> sets = new ArrayList<>();
     @Bind(R.id.themeRecyclerView) RecyclerView mThemeRecyclerView;
+    @Bind(R.id.searchButton) ImageButton mSearchButton;
+    @Bind(R.id.searchEditText) EditText mSearchEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         getLegos(type, query);
 
         setTitle("Welcome to LegoQuest!");
+
+        mSearchButton.setOnClickListener(this);
     }
 
     public void getLegos(String type, String query) {
@@ -73,5 +81,16 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view == mSearchButton) {
+            String query = mSearchEditText.getText().toString();
+
+            Intent intent = new Intent(MainActivity.this, ThemeActivity.class);
+            intent.putExtra("query", query);
+            this.startActivity(intent);
+        }
     }
 }

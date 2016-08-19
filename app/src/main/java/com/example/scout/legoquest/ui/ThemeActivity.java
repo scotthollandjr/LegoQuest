@@ -50,7 +50,6 @@ public class ThemeActivity extends AppCompatActivity implements View.OnClickList
 
         getLegos(type, query);
 
-
         setTitle(query);
     }
 
