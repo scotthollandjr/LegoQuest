@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context="com.example.scout.legoquest.ui.SetDetailFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -21,13 +21,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="1">
+        android:orientation="vertical">
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textSize="30sp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Description"
             android:id="@+id/descrText"
@@ -35,8 +38,43 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="2.25"
             android:layout_below="@id/descrText"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Year"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:id="@+id/yearText"
+                android:layout_gravity="left|top"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Pieces"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:id="@+id/piecesText"
+                android:layout_gravity="center_horizontal|top"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2.25"
             android:orientation="horizontal">
 
             <TextView
@@ -44,8 +82,11 @@
                 android:layout_weight=".33"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Pieces"
-                android:id="@+id/piecesText"
+                android:text="Theme 1"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:id="@+id/themeText1"
                 android:layout_gravity="center_horizontal|top"
                 android:textAlignment="center" />
 
@@ -54,8 +95,11 @@
                 android:layout_weight=".33"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Theme"
-                android:id="@+id/themeText"
+                android:text="Theme 2"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:id="@+id/themeText2"
                 android:layout_gravity="right|top"
                 android:textAlignment="center" />
 
@@ -64,22 +108,58 @@
                 android:layout_weight=".33"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Year"
-                android:id="@+id/yearText"
+                android:text="Theme 3"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:id="@+id/themeText3"
                 android:layout_gravity="left|top"
                 android:textAlignment="center" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2.25"
+            android:layout_below="@id/descrText"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="URL"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:id="@+id/urlText"
+                android:layout_gravity="left|top"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="eBay"
+                android:padding="5dp"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:id="@+id/ebayText"
+                android:layout_gravity="center_horizontal|top"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight=".5"
-            android:background="#dfd4d4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight=".8"
             android:id="@+id/imageView"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"/>
 
     </LinearLayout>
-
 
 </FrameLayout>

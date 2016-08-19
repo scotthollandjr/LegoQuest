@@ -26,7 +26,11 @@ public class SetDetailFragment extends Fragment {
     @Bind(R.id.descrText) TextView mDescrView;
     @Bind(R.id.piecesText) TextView mPiecesView;
     @Bind(R.id.yearText) TextView mYearView;
-    @Bind(R.id.themeText) TextView mThemeView;
+    @Bind(R.id.themeText1) TextView mThemeView1;
+    @Bind(R.id.themeText2) TextView mThemeView2;
+    @Bind(R.id.themeText3) TextView mThemeView3;
+    @Bind(R.id.urlText) TextView mUrlText;
+    @Bind(R.id.ebayText) TextView mEbayText;
 
     private Set mSet;
 
@@ -47,6 +51,10 @@ public class SetDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         mSet = Parcels.unwrap(getArguments().getParcelable("set"));
+
+
+        //mUrlText.setOnClickListener(this);
+        //mEbayText.setOnClickListener(this);
     }
 
     @Override
@@ -59,10 +67,21 @@ public class SetDetailFragment extends Fragment {
                 .load(mSet.getImg_big())
                 .into(mImageView);
         mDescrView.setText(mSet.getDescr());
-        mPiecesView.setText(mSet.getPieces() + "");
-        mYearView.setText(mSet.getYear() + "");
-        mThemeView.setText(mSet.getTheme1());
-
+        mPiecesView.setText("Pieces: " + mSet.getPieces());
+        mYearView.setText("Released: " + mSet.getYear());
+        mThemeView1.setText(mSet.getTheme1());
+        if (mSet.getTheme2().equals("null")) {
+            mThemeView2.setText("N/A");
+        } else {
+            mThemeView2.setText(mSet.getTheme2());
+        }
+        if (mSet.getTheme3().equals("null")) {
+            mThemeView3.setText("N/A");
+        } else {
+            mThemeView3.setText(mSet.getTheme3());
+        }
+//        mUrlText.setText(mSet.getUrl());
+//        mEbayText.setText("http://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=Lego+" + mSet.getDescr());
         return view;
     }
 
